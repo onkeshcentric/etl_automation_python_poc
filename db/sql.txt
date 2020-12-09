@@ -1,3 +1,4 @@
+---------------------SOURCE---------------------------------------
 CREATE TABLE claims(
 ID INTEGER PRIMARY KEY,
 CLAIM_ID TEXT NOT NULL,
@@ -22,6 +23,8 @@ STATE TEXT NOT NULL,
 ZIP TEXT NOT NULL);
 
 INSERT INTO members(ID, FIRST_NAME, LAST_NAME, DOB, MEMBER_ID, SSN, ADDRESS1, ADDRESS2, CITY, STATE, ZIP) values(?,?,?,?,?,?,?,?,?,?,?);
+
+---------------------DESTINATION---------------------------------------
 
 CREATE TABLE reports(
 ID INTEGER PRIMARY KEY,

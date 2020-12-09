@@ -4,11 +4,15 @@ import logging
 
 logger.setLevel(logging.INFO)
 
-
 def find_count_table(conn, table_name):
     cur = conn.cursor()
     count = cur.execute("select count(*) from "+table_name+";").fetchone()
     return count[0]
+
+def select_all(conn, table_name):
+    cur = conn.cursor()
+    res = cur.execute("select * from "+table_name+";").fetchall()
+    return res
 
 import sqlite3
 
@@ -17,12 +21,18 @@ conn_dest = sqlite3.connect(SQLITEDB_DESTINATION_PATH)
 d = find_count_table(conn_source, 'claims')
 e = find_count_table(conn_dest, 'reports')
 
-assert d == e
+print(str(d)+","+str(e))
+#
+# assert d == e
+
+res = select_all(conn_dest, 'reports')
+
+print(str(res))
 
 # with SQLITEDB_SOURCE.connect() as conn1:
 #     with SQLITEDB_DESTINATION.connect() as conn2:
-#         sql_source = "SELECT COUNT(*) FROM claims"
-#         sql_dest = "SELECT COUNT(*) FROM reports"
+#         sql_source = "SELECT * FROM claims"
+#         sql_dest = "SELECT * FROM reports"
 #
 #         a = get_rows(sql_source, conn1)
 #         b = get_rows(sql_dest, conn2)
@@ -30,4 +40,4 @@ assert d == e
 #         print(str(a), str(b))
 #
 #         assert str(a) == str(b)
-
+#
