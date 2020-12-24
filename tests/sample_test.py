@@ -14,20 +14,33 @@ def select_all(conn, table_name):
     res = cur.execute("select * from "+table_name+";").fetchall()
     return res
 
+def distinct_count(conn, table_name, primary_column_name):
+    cur = conn.cursor()
+    count = cur.execute("select count(DISTINCT "+primary_column_name+") from "+table_name+";").fetchone
+    return count[0]
+
 import sqlite3
 
 conn_source = sqlite3.connect(SQLITEDB_SOURCE_PATH)
 conn_dest = sqlite3.connect(SQLITEDB_DESTINATION_PATH)
-d = find_count_table(conn_source, 'claims')
-e = find_count_table(conn_dest, 'reports')
+d = distinct_count(conn_source, 'claims', 'ID')
+e = distinct_count(conn_dest, 'reports', 'ID')
 
-print(str(d)+","+str(e))
+print(strt(d) +"," + str(e))
+
+
+# conn_source = sqlite3.connect(SQLITEDB_SOURCE_PATH)
+# conn_dest = sqlite3.connect(SQLITEDB_DESTINATION_PATH)
+# d = find_count_table(conn_source, 'claims')
+# e = find_count_table(conn_dest, 'reports')
+
+
+# print(str(d)+","+str(e))
+
+
+# res = select_all(conn_dest, 'reports')
 #
-# assert d == e
-
-res = select_all(conn_dest, 'reports')
-
-print(str(res))
+# print(str(res))
 
 # with SQLITEDB_SOURCE.connect() as conn1:
 #     with SQLITEDB_DESTINATION.connect() as conn2:
@@ -41,3 +54,4 @@ print(str(res))
 #
 #         assert str(a) == str(b)
 #
+

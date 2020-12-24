@@ -3,10 +3,6 @@ import sqlite3
 from behave import *
 from hamcrest import assert_that, equal_to
 
-@given('I connect to source and destination databases')
-def connect_to_db(context):
-    context.connection['source'] = sqlite3.connect(SQLITEDB_SOURCE_PATH)
-    context.connection['destination'] = sqlite3.connect(SQLITEDB_DESTINATION_PATH)
 
 def find_count_table(conn, table_name):
     cur = conn.cursor()
@@ -21,6 +17,7 @@ def step_impl(context, tbl, db):
         conn = context.connection['destination']
 
     context.count[str(tbl)] = find_count_table(conn, tbl)
+
 
 @then('I validate the count between tables "{table1}" and "{table2}"')
 def step_impl(context, table1, table2):
