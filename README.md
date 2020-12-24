@@ -3,4 +3,11 @@ ETL Automation POC using Python
 
 ## BDD Approach
 Implemented using behave
-To execute the tests, use the command: `behave`
+To execute all the BDD scenarios, simpley use the command: `behave`
+
+To execute specific feature file, use the command: `behanve feature/<name of feature>:<scenario line number>`
+
+### ETL Scenarios categories implemented
+- Data Conformance
+- Data Reconciliation
+- Data Transformation
