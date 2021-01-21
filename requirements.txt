@@ -4,3 +4,4 @@ parse==1.18.0
 parse-type==0.5.2
 PyHamcrest==2.0.2
 six==1.15.0
+allure-behave==2.8.31
