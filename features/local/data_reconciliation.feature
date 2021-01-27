@@ -1,4 +1,5 @@
-Feature: ETL Tests Data Recon
+@local
+Feature: ETL Tests Data Reconciliation
   Sample tests for ETL testing POC
 
     Background:
@@ -8,7 +9,3 @@ Feature: ETL Tests Data Recon
     Then I fetch count for "members" table from "source" database
     Then I fetch count for "reports" table from "destination" database
     Then I validate the count between tables "members" and "reports"
-
-
-
-

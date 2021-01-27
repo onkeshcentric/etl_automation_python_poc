@@ -14,6 +14,15 @@ To execute specific feature file, use the command:
 - Data Reconciliation
 - Data Transformation
 
+### Executing Specific Scenarios
+Behave has support for custom cucumber tags and anyone can execute any specific test using the command 
+
+`behave -t <tag_name>`
+
+For example, user can execute the following command to run on both local and remote DB tests: 
+
+`behave -t @local,@remote`
+
 ### Reporting
 
 Current reporting is being done using allure reports.

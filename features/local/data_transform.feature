@@ -1,8 +1,8 @@
-Feature: ETL Tests Data Transform
-  Sample tests for ETL testing POC
+#Feature: ETL Tests Data Transform
+#  Sample tests for ETL testing POC
 
-    Background:
-        Given I connect to source and destination databases
+#    Background:
+#        Given I connect to source and destination databases
 
 #  Scenario: Check count between source and destination
 #    Then I fetch count for "claims" table from "source" database
